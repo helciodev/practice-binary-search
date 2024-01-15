@@ -1,39 +1,31 @@
-const { expect } = require('chai');
+const { expect } = require("chai");
 
 const [linearSearch, binarySearch] = require("../binary-search.js");
 
-describe ('Search', function () {
-
+describe("Search", function () {
   let arr;
 
   before(function () {
-
     arr = [];
 
-    for (let i = 0 ; i < 1000000 ; i++) {
+    for (let i = 0; i < 1000000; i++) {
       arr.push(i);
     }
-
   });
 
-  it('performs a linear search', function () {
-
+  it("performs a linear search", function () {
     expect(linearSearch(arr, 100)).to.equal(100);
 
     expect(linearSearch(arr, 1000000)).to.equal(-1);
-
   });
 
-  it('performs a binary search', function () {
-
+  it("performs a binary search", function () {
     expect(binarySearch(arr, 100)).to.equal(100);
 
     expect(binarySearch(arr, 1000000)).to.equal(-1);
-
   });
 
-  it('performs at least 500 linear searches in under 1 second', function () {
-
+  it("performs at least 500 linear searches in under 1 second", function () {
     const timeout = 1000;
     let linearSearches = 0;
     let startTime = Date.now();
@@ -51,11 +43,9 @@ describe ('Search', function () {
     }
 
     expect(linearSearches).to.be.above(500);
-
   });
 
-  it('performs at least 100000 binary searches in under 1 second', function () {
-
+  it("performs at least 100000 binary searches in under 1 second", function () {
     const timeout = 1000;
     let startTime = Date.now();
     let i = 1;
@@ -74,7 +64,4 @@ describe ('Search', function () {
 
     expect(binarySearches).to.be.above(100000);
   });
-
-
 });
-
